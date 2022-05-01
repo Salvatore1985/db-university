@@ -59,14 +59,14 @@ JOIN
         FROM `students`
         JOIN `degrees`
         ON `degrees`.`id`=`students`.`degree_id`
-        WHERE `degrees`.`name`='Corso di Laurea in Economia'
+        WHERE `degrees`.`name`='Corso di Laurea in Economia';
 
 2.Selezionare tutti i Corsi di Laurea del Dipartimento di Neuroscienze
         SELECT `degrees`.`name` AS `esame`,`departments`.`name` AS `dipartimento`
         FROM `degrees`
         JOIN `departments`
         ON `departments`.`id`=`degrees`.`department_id`
-        WHERE `departments`.`name`='Dipartimento di Neuroscienze'
+        WHERE `departments`.`name`='Dipartimento di Neuroscienze';
 
 3.Selezionare tutti i corsi insegna Fulvio Amato (id=44)
         SELECT `courses`.*
@@ -76,7 +76,7 @@ JOIN
         JOIN `teachers`
         ON `teachers`.`id`= `course_teacher`.`teacher_id`
         WHERE `teachers`.`name`='Fulvio'
-        AND `teachers`.`surname`='Amato'
+        AND `teachers`.`surname`='Amato';
 
 
 4.Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il 
@@ -87,7 +87,7 @@ relativo dipartimento, in ordine alfabetico per cognome e nome
         ON `degrees`.`id`=`students`.`degree_id`
         JOIN `departments`
         ON `departments`.`id`=`degrees`.`department_id`
-        ORDER BY `students`.`name` ,`students`.`surname`
+        ORDER BY `students`.`name` ,`students`.`surname`;
 
 5.Selezionare tutti i corsi di laura con i relativi corsi insegnanti
         SELECT `degrees`.*,`teachers`.*,`courses`.*
@@ -97,10 +97,10 @@ relativo dipartimento, in ordine alfabetico per cognome e nome
         JOIN `course_teacher`
         ON `courses`.`id`=`course_teacher`.`course_id`
         JOIN `teachers`
-        ON `teachers`.`id`=`course_teacher`.`teacher_id`
+        ON `teachers`.`id`=`course_teacher`.`teacher_id`;
 
 6.Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
-        SELECT `teachers`.`name`,`teachers`.`surname`,`departments`.`name`
+       SELECT DISTINCT`teachers`.`name`,`teachers`.`surname`,`departments`.`name`
         FROM `teachers`
         JOIN `course_teacher`
         ON `teachers`.`id` =`course_teacher`.`teacher_id`
@@ -111,6 +111,8 @@ relativo dipartimento, in ordine alfabetico per cognome e nome
         JOIN `departments`
         ON `departments`.`id`= `degrees`.`department_id`
 
-        WHERE `departments`.`name`='Dipartimento di Matematica'
+        WHERE `departments`.`name`='Dipartimento di Matematica'  
+        ORDER BY `teachers`.`name` ,`teachers`.`surname`;
 
-7.Slezionare tutti i docenti che insegnano nel Dipartimento
+7.BONUS:Selezionare per ogni studente quanti tentativi d'esame ha sostenuto per superare ciascuno dei suoi esami
+
